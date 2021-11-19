@@ -16,7 +16,7 @@ class RegActivity : AppCompatActivity() {
                 "\\." +
                 "[a-z]{1,3}"
     )
-    var email_et: TextView? = null
+    lateinit var email_et: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class RegActivity : AppCompatActivity() {
         val login = intent.getStringExtra("login")
         findViewById<EditText>(R.id.login_et).setText(login)
         this.email_et = findViewById<EditText>(R.id.email_et)
-        email_et?.setOnFocusChangeListener { view, v -> checkMail(v) }
+        email_et.setOnFocusChangeListener { view, v -> checkMail(v) }
         val sec_pass = findViewById<EditText>(R.id.password_et2)
         val first_pass = findViewById<EditText>(R.id.password_et)
         val textWatcher = object : TextWatcher {
@@ -50,12 +50,12 @@ class RegActivity : AppCompatActivity() {
     }
 
     private fun checkMail(b: Boolean) {
-        if (!b && email_et?.text != "" && !EMAIL_ADDRESS_PATTERN.matcher(email_et?.text.toString())
+        if (!b && email_et.text != "" && !EMAIL_ADDRESS_PATTERN.matcher(email_et.text.toString())
                 .matches()
         ) {
-            email_et?.error = "Please write normal email"
+            email_et.error = "Please write normal email"
         } else {
-            email_et?.error = null
+            email_et.error = null
         }
     }
 }

@@ -120,6 +120,7 @@
         android:layout_marginLeft="125dp"
         android:layout_marginRight="125dp"
         android:background="@drawable/i_want_border_radius"
+        android:onClick="login"
         android:text="Sign in"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
